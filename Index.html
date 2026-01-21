@@ -16,6 +16,27 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-blue-900 text-white transform -translate-x-full transition-transform duration-300 z-[60] shadow-2xl">
+    <div class="p-6">
+        <button onclick="toggleMenu()" class="text-white mb-8 text-2xl">×</button>
+        <nav class="space-y-6">
+            <a href="index.html" class="block hover:text-dorado border-b border-blue-800 pb-2">Inicio</a>
+            <a href="contacto.html" class="block hover:text-dorado border-b border-blue-800 pb-2">Contáctanos</a>
+            <a href="comentarios.html" class="block hover:text-dorado border-b border-blue-800 pb-2">Foro de Propuestas</a>
+        </nav>
+    </div>
+</div>
+
+<button onclick="toggleMenu()" class="fixed top-5 left-5 z-[55] bg-blue-900 text-white p-3 rounded-full shadow-lg">
+    <i class="fas fa-bars"></i>
+</button>
+
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('-translate-x-full');
+    }
+</script>
 
     <nav class="bg-white shadow-lg sticky top-0 z-50 border-b-2 border-dorado">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
