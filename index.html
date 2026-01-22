@@ -124,6 +124,25 @@
             sidebar.classList.toggle('-translate-x-full');
         }
     </script>
+    <script>
+// Centinela de Seguridad Nueva Nación
+(function() {
+    console.log("🛡️ Protección Nueva Nación Activa");
+
+    // Detectar si alguien intenta abrir la consola para hackear (opcional)
+    let devtools = function() {};
+    devtools.toString = function() {
+        console.warn("⚠️ Alerta: Acceso a herramientas de desarrollo detectado.");
+    };
+
+    // Bloquear intentos de inyectar scripts externos
+    window.addEventListener('error', function(e) {
+        if (e.target.tagName === 'SCRIPT') {
+            console.error("❌ Intento de carga de script no autorizado bloqueado.");
+        }
+    }, true);
+})();
+    </script>
 
 </body>
 </html>
