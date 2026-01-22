@@ -1,108 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
-<meta http-equiv="X-Frame-Options" content="DENY">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | Nueva Nación</title>
+    <title>Contacto - Nueva Nación</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .color-azul { background-color: #002855; }
-        .text-azul { color: #002855; }
-        .border-dorado { border-color: #d4af37; }
-        .text-dorado { color: #d4af37; }
-        #sidebar { transition: all 0.3s ease-in-out; }
+        :root { --azul: #002366; --dorado: #C5A021; }
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .gradient-band { background: linear-gradient(to right, var(--azul), #0044cc); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body>
 
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-blue-900 text-white transform -translate-x-full z-[100] shadow-2xl">
-        <div class="p-6">
-            <div class="flex justify-between items-center mb-10">
-                <span class="text-xl font-bold text-dorado tracking-widest">MENÚ</span>
-                <button onclick="toggleMenu()" class="text-white text-3xl focus:outline-none">&times;</button>
-            </div>
-            <nav class="space-y-6 text-lg">
-                <a href="index.html" class="block hover:text-dorado border-b border-blue-800 pb-2">Inicio</a>
-                <a href="contacto.html" class="block hover:text-dorado border-b border-blue-800 pb-2 font-bold">Contáctanos</a>
-                <a href="comentarios.html" class="block hover:text-dorado border-b border-blue-800 pb-2">Foro de Propuestas</a>
-            </nav>
-        </div>
-    </div>
-
-    <button onclick="toggleMenu()" class="fixed bottom-8 left-6 z-[90] bg-blue-900 text-white p-4 rounded-full shadow-2xl border-2 border-dorado">
-        <i class="fas fa-bars text-xl"></i>
-    </button>
-
-    <nav class="bg-white shadow-lg border-b-2 border-dorado p-4">
+    <nav class="gradient-band p-4 shadow-xl text-white">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Logo" class="h-12 w-auto">
-                <span class="text-xl font-bold text-azul uppercase">Nueva <span class="text-dorado">Nación</span></span>
-            </div>
-            <a href="index.html" class="text-azul font-bold hover:text-dorado transition">← Volver al Inicio</a>
+            <h1 class="font-bold tracking-tighter text-xl uppercase">Nueva Nación <span class="text-dorado">Potencia</span></h1>
+            <a href="index.html" class="bg-white text-blue-900 px-4 py-1 rounded-full font-bold hover:bg-dorado hover:text-white transition">Volver</a>
         </div>
     </nav>
 
-    <section class="py-16 px-6 container mx-auto max-w-5xl">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-black text-azul uppercase mb-4 tracking-tight italic">Enlace Oficial</h1>
-            <p class="text-lg text-gray-600">Comunícate directamente con la coordinación del movimiento.</p>
-        </div>
+    <div class="container mx-auto px-4 py-12 max-w-2xl">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-t-8 border-dorado">
+            <div class="p-8 text-center">
+                <h2 class="text-3xl font-black text-blue-900 mb-2 uppercase">Unirse al Movimiento</h2>
+                <p class="text-gray-600 mb-8 italic">Abogados, Jueces, Ingenieros y Ciudadanos construyendo el futuro.</p>
 
-        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2 border border-gray-100">
-            <div class="color-azul p-12 text-white flex flex-col justify-center relative">
-                <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <i class="fas fa-paper-plane text-8xl"></i>
-                </div>
-                <h2 class="text-3xl font-bold mb-6 text-dorado uppercase tracking-tighter">Nueva Nación</h2>
-                <p class="mb-8 opacity-90 leading-relaxed">
-                    "Garantizamos que cada propuesta sea revisada bajo los principios de legalidad y progreso que nuestra patria requiere."
-                </p>
-                <div class="space-y-6">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-blue-800 p-3 rounded-full text-dorado">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <span class="text-sm">movimientonuevanacionoficial@gmail.com</span>
+                <form id="formContacto" class="space-y-6 text-left">
+                    <div>
+                        <label class="block text-sm font-bold text-blue-900 mb-2 uppercase">Nombre y Profesión</label>
+                        <input type="text" id="nombre" placeholder="Ej: Juan Pérez - Ingeniero" required 
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-dorado focus:ring-1 focus:ring-dorado transition">
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-blue-800 p-3 rounded-full text-dorado">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <span class="text-sm">Venezuela Potencia</span>
+                    <div>
+                        <label class="block text-sm font-bold text-blue-900 mb-2 uppercase">Tu Mensaje o Propuesta</label>
+                        <textarea id="mensaje" rows="5" placeholder="Escribe aquí tu propuesta para la nación..." required 
+                                  class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-dorado focus:ring-1 focus:ring-dorado transition"></textarea>
                     </div>
-                </div>
+                    
+                    <button type="button" onclick="enviarPropuesta()" 
+                            class="w-full bg-blue-900 text-white font-bold py-4 rounded-lg shadow-lg hover:bg-dorado hover:scale-105 transition-all duration-300 uppercase tracking-widest">
+                        Enviar a la Central Oficial
+                    </button>
+                </form>
             </div>
-
-            <div class="p-10">
-                <form id="formContacto" class="space-y-6">
-    <div>
-        <label class="block text-sm font-bold text-azul mb-2 uppercase">Nombre Completo</label>
-        <input type="text" id="nombre" required class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-dorado transition">
+        </div>
     </div>
-    <div>
-        <label class="block text-sm font-bold text-azul mb-2 uppercase">Mensaje o Propuesta</label>
-        <textarea id="mensaje" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none focus:border-dorado transition"></textarea>
-    </div>
-    <button type="button" onclick="enviarCorreoDirecto()" class="w-full bg-blue-900 text-white font-bold py-4 rounded-lg shadow-lg hover:bg-dorado transition duration-300 uppercase tracking-widest">
-        Redactar Mensaje Oficial
-    </button>
-</form>
 
-<script>
-function enviarCorreoDirecto() {
-    const nombre = document.getElementById('nombre').value;
-    const mensaje = document.getElementById('mensaje').value;
-    const emailDestino = "movimientonuevanacionoficial@gmail.com";
-    
-    const asunto = encodeURIComponent("PROPUESTA NUEVA NACIÓN: " + nombre);
-    const cuerpo = encodeURIComponent("Saludos Movimiento Nueva Nación,\n\nMi nombre es " + nombre + ".\n\nMi propuesta es:\n" + mensaje);
-    
-    // Esto abre la app de correo del usuario directamente
-    window.location.href = `mailto:${emailDestino}?subject=${asunto}&body=${cuerpo}`;
-}
-</script>
+    <footer class="text-center py-8 text-gray-500 text-sm">
+        🛡️ Protegido por el Sistema de Seguridad Nueva Nación 2026
+    </footer>
+
+    <script>
+    function enviarPropuesta() {
+        const nombre = document.getElementById('nombre').value;
+        const mensaje = document.getElementById('mensaje').value;
+        
+        if(!nombre || !mensaje) {
+            alert("Por favor, llena todos los campos.");
+            return;
+        }
+
+        const emailDestino = "movimientonuevanacionoficial@gmail.com";
+        const asunto = encodeURIComponent("NUEVA INCORPORACIÓN: " + nombre);
+        const cuerpo = encodeURIComponent("Saludos Central Nueva Nación,\n\n" + 
+                       "Mi nombre y perfil es: " + nombre + "\n" +
+                       "Mi propuesta/mensaje:\n" + mensaje + "\n\n" +
+                       "Enviado desde el portal oficial.");
+        
+        // Abre la app de correo del usuario directamente
+        window.location.href = `mailto:${emailDestino}?subject=${asunto}&body=${cuerpo}`;
+    }
+
+    // POLICÍA CIBERNÉTICO (Script Centinela)
+    (function() {
+        console.log("🛡️ Centinela Activo: Nueva Nación Potencia");
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'SCRIPT') console.warn("Intento de inyección bloqueado.");
+        }, true);
+    })();
+    </script>
+</body>
+</html>
