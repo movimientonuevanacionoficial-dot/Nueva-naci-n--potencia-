@@ -1,148 +1,157 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
-<meta http-equiv="X-Frame-Options" content="DENY">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nueva Nación | Fuerza y Progreso</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        .color-azul { background-color: #002855; }
-        .text-azul { color: #002855; }
-        .color-verde { background-color: #004b23; }
-        .border-dorado { border-color: #d4af37; }
-        .text-dorado { color: #d4af37; }
-        .drop-shadow-gold { filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3)); }
-        #sidebar { transition: all 0.3s ease-in-out; }
+        :root { --azul-principal: #002855; --dorado-noble: #d4af37; }
+        .bg-azul-nn { background-color: var(--azul-principal); }
+        .text-azul-nn { color: var(--azul-principal); }
+        .border-dorado-nn { border-color: var(--dorado-noble); }
+        .text-dorado-nn { color: var(--dorado-noble); }
+        .drop-shadow-gold { filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)); }
+        #sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         html { scroll-behavior: smooth; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 95; backdrop-filter: blur(4px); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-blue-900 text-white transform -translate-x-full z-[100] shadow-2xl">
-        <div class="p-6">
-            <div class="flex justify-between items-center mb-10">
-                <span class="text-xl font-bold text-dorado tracking-widest uppercase">Menú</span>
-                <button onclick="toggleMenu()" class="text-white text-3xl focus:outline-none">&times;</button>
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-blue-950 text-white transform -translate-x-full z-[100] shadow-2xl border-r border-dorado-nn">
+        <div class="p-8">
+            <div class="flex justify-between items-center mb-12">
+                <span class="text-2xl font-black text-dorado-nn tracking-widest uppercase italic">Menú NN</span>
+                <button onclick="toggleMenu()" class="text-white text-4xl hover:text-dorado-nn transition">&times;</button>
             </div>
-            <nav class="space-y-6 text-lg">
-                <a href="index.html" class="block hover:text-dorado border-b border-blue-800 pb-2 transition-colors">Inicio</a>
-                <a href="manifiesto.html" class="block hover:text-dorado border-b border-blue-800 pb-2 transition-colors font-bold">Manifiesto</a>
-                <a href="contacto.html" class="block hover:text-dorado border-b border-blue-800 pb-2 transition-colors">Contáctanos</a>
-                <a href="comentarios.html" class="block hover:text-dorado border-b border-blue-800 pb-2 transition-colors">Foro de Propuestas</a>
+            <nav class="space-y-8 text-xl">
+                <a href="index.html" class="flex items-center space-x-4 hover:text-dorado-nn transition-all"><i class="fas fa-home w-8"></i><span>Inicio</span></a>
+                <a href="manifiesto.html" class="flex items-center space-x-4 hover:text-dorado-nn transition-all"><i class="fas fa-file-alt w-8"></i><span>Manifiesto</span></a>
+                <a href="contacto.html" class="flex items-center space-x-4 hover:text-dorado-nn transition-all"><i class="fas fa-user-plus w-8"></i><span>Sumarse</span></a>
+                <a href="comentarios.html" class="flex items-center space-x-4 hover:text-dorado-nn transition-all"><i class="fas fa-comments w-8"></i><span>Foro</span></a>
             </nav>
-            <div class="mt-20">
-                <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Logo Menú" class="w-24 mx-auto opacity-40">
+            <div class="absolute bottom-10 left-0 w-full text-center opacity-30">
+                <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Sello" class="w-20 mx-auto">
+                <p class="text-xs mt-2 uppercase tracking-tighter">Soberanía Nacional</p>
             </div>
         </div>
     </div>
 
-    <button onclick="toggleMenu()" class="fixed bottom-8 left-6 z-[90] bg-blue-900 text-white p-4 rounded-full shadow-2xl border-2 border-dorado hover:scale-110 active:scale-95 transition-all">
+    <button onclick="toggleMenu()" class="fixed bottom-8 left-6 z-[90] bg-blue-900 text-white p-4 rounded-full shadow-2xl border-2 border-dorado-nn hover:scale-110 active:scale-95 transition-all">
         <i class="fas fa-bars text-xl"></i>
     </button>
 
-    <nav class="bg-white shadow-lg sticky top-0 z-50 border-b-2 border-dorado">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="bg-white shadow-md sticky top-0 z-50 border-b-2 border-dorado-nn">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Logo Nueva Nación" class="h-14 w-auto drop-shadow-sm">
-                <span class="text-2xl font-bold text-azul tracking-tighter uppercase italic">Nueva <span class="text-dorado">Nación</span></span>
+                <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Logo" class="h-12 w-auto drop-shadow-sm">
+                <span class="text-xl font-bold text-azul-nn uppercase italic">Nueva <span class="text-dorado-nn">Nación</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase tracking-widest">
-                <a href="manifiesto.html" class="text-azul hover:text-dorado transition">Manifiesto</a>
-                <a href="#pilares" class="text-azul hover:text-dorado transition">Pilares</a>
-                <a href="contacto.html" class="bg-blue-900 text-white px-5 py-2 rounded-full hover:bg-dorado transition">Sumarse</a>
+            <div class="hidden md:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest">
+                <a href="manifiesto.html" class="text-azul-nn hover:text-dorado-nn transition">Manifiesto</a>
+                <a href="#pilares" class="text-azul-nn hover:text-dorado-nn transition">Pilares</a>
+                <a href="contacto.html" class="bg-blue-900 text-white px-6 py-2 rounded-full hover:bg-dorado-nn hover:shadow-lg transition">Sumarse</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative bg-azul text-white py-20 px-6 overflow-hidden color-azul">
+    <header class="relative bg-azul-nn text-white py-24 px-6 overflow-hidden">
         <div class="container mx-auto text-center relative z-10">
-            <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Nueva Nación Turpial" class="mx-auto h-64 md:h-80 mb-8 drop-shadow-gold">
-            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight uppercase">Fuerza y Progreso</h1>
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto font-light opacity-90 mb-10 italic">
-                Hacia una Venezuela Potencia: El equilibrio perfecto entre una <span class="text-dorado font-bold">Economía Productiva</span> y una <span class="font-bold text-green-400 text-green-500">Nación Soberana</span>.
+            <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Turpial" class="mx-auto h-64 md:h-80 mb-10 drop-shadow-gold animate-pulse">
+            <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tighter uppercase">Fuerza y Progreso</h1>
+            <p class="text-xl md:text-3xl max-w-4xl mx-auto font-light opacity-90 mb-12 italic leading-relaxed">
+                Hacia una Venezuela Potencia: El equilibrio entre una <span class="text-dorado-nn font-bold underline">Economía Productiva</span> y una <span class="font-bold text-green-400">Nación Soberana</span>.
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="manifiesto.html" class="bg-dorado text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-azul transition shadow-xl uppercase tracking-widest">Ver Manifiesto</a>
-                <a href="comentarios.html" class="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-azul transition uppercase tracking-widest">Foro Público</a>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="manifiesto.html" class="bg-dorado-nn text-white px-10 py-4 rounded-full font-black hover:bg-white hover:text-blue-900 transition shadow-2xl uppercase tracking-widest">Ver Manifiesto</a>
+                <a href="comentarios.html" class="bg-white/10 border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-blue-900 transition uppercase tracking-widest">Foro Público</a>
             </div>
         </div>
     </header>
 
-    <section id="pilares" class="py-20 px-6 container mx-auto">
+    <section id="pilares" class="py-24 px-6 container mx-auto">
         <div class="grid md:grid-cols-2 gap-12">
-            <div id="economia" class="bg-white p-10 rounded-2xl shadow-2xl border-l-8 border-blue-900 transform hover:-translate-y-2 transition-transform">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-chart-line text-4xl text-azul mr-4"></i>
-                    <h2 class="text-3xl font-black text-azul uppercase">Economía Productiva</h2>
+            <div class="bg-white p-10 rounded-3xl shadow-xl border-t-8 border-blue-900 hover:shadow-2xl transition-all">
+                <div class="flex items-center mb-8">
+                    <div class="bg-blue-100 p-4 rounded-full mr-4"><i class="fas fa-chart-line text-3xl text-blue-900"></i></div>
+                    <h2 class="text-3xl font-black text-blue-900 uppercase">Economía Productiva</h2>
                 </div>
-                <ul class="space-y-4 text-lg">
-                    <li class="flex items-start"><i class="fas fa-bolt text-dorado mt-1 mr-3"></i> <strong>Energía y Sostenibilidad:</strong> Modernización de la matriz energética nacional.</li>
-                    <li class="flex items-start"><i class="fas fa-industry text-dorado mt-1 mr-3"></i> <strong>Industria y Agro:</strong> Impulso total al autosustento.</li>
-                    <li class="flex items-start"><i class="fas fa-microchip text-dorado mt-1 mr-3"></i> <strong>Innovación:</strong> Tecnología para el crecimiento financiero.</li>
+                <ul class="space-y-6 text-lg text-gray-700">
+                    <li class="flex items-start"><i class="fas fa-check-circle text-dorado-nn mt-1 mr-3"></i> <span><strong>Energía:</strong> Modernización radical de la matriz energética.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-dorado-nn mt-1 mr-3"></i> <span><strong>Industria:</strong> Impulso total al autosustento agroindustrial.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-dorado-nn mt-1 mr-3"></i> <span><strong>Innovación:</strong> Tecnología aplicada al crecimiento financiero.</span></li>
                 </ul>
             </div>
 
-            <div id="soberania" class="bg-white p-10 rounded-2xl shadow-2xl border-l-8 border-green-800 transform hover:-translate-y-2 transition-transform">
-                <div class="flex items-center mb-6">
-                    <i class="fas fa-shield-alt text-4xl text-green-800 mr-4"></i>
+            <div class="bg-white p-10 rounded-3xl shadow-xl border-t-8 border-green-800 hover:shadow-2xl transition-all">
+                <div class="flex items-center mb-8">
+                    <div class="bg-green-100 p-4 rounded-full mr-4"><i class="fas fa-shield-alt text-3xl text-green-800"></i></div>
                     <h2 class="text-3xl font-black text-green-800 uppercase">Nación Soberana</h2>
                 </div>
-                <ul class="space-y-4 text-lg">
-                    <li class="flex items-start"><i class="fas fa-balance-scale text-dorado mt-1 mr-3"></i> <strong>Seguridad Jurídica:</strong> Respeto absoluto a la Ley y el debido proceso.</li>
-                    <li class="flex items-start"><i class="fas fa-user-graduate text-dorado mt-1 mr-3"></i> <strong>Salud y Educación:</strong> Base fundamental del desarrollo humano.</li>
-                    <li class="flex items-start"><i class="fas fa-anchor text-dorado mt-1 mr-3"></i> <strong>Defensa Institucional:</strong> Orden y protección de la soberanía.</li>
+                <ul class="space-y-6 text-lg text-gray-700">
+                    <li class="flex items-start"><i class="fas fa-check-circle text-dorado-nn mt-1 mr-3"></i> <span><strong>Justicia:</strong> Seguridad jurídica y respeto al debido proceso.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-dorado-nn mt-1 mr-3"></i> <span><strong>Educación:</strong> Formación técnica y moral del nuevo ciudadano.</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle text-dorado-nn mt-1 mr-3"></i> <span><strong>Defensa:</strong> Protección institucional de nuestra soberanía.</span></li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="principios" class="bg-gray-100 py-16 px-6 border-y border-gray-200 shadow-inner">
+    <section class="bg-white py-20 px-6 border-y border-gray-100 shadow-inner overflow-hidden">
         <div class="container mx-auto text-center">
-            <h3 class="text-2xl md:text-4xl font-serif italic text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                "Todo documento ante el tribunal es legal, y la transparencia institucional es nuestra garantía de paz."
+            <i class="fas fa-quote-left text-dorado-nn text-4xl mb-6 opacity-30"></i>
+            <h3 class="text-3xl md:text-5xl font-serif italic text-blue-950 max-w-5xl mx-auto leading-tight">
+                "La transparencia institucional es la garantía de nuestra paz definitiva."
             </h3>
-            <p class="mt-8 text-dorado font-bold uppercase tracking-[0.3em]">Nueva Nación</p>
+            <div class="mt-8 flex justify-center items-center space-x-4">
+                <div class="h-[2px] w-12 bg-dorado-nn"></div>
+                <p class="text-dorado-nn font-black uppercase tracking-[0.5em]">Nueva Nación</p>
+                <div class="h-[2px] w-12 bg-dorado-nn"></div>
+            </div>
         </div>
     </section>
 
-    <footer class="color-azul text-white py-12 px-6 text-center">
-        <div class="mb-6 flex justify-center space-x-6">
-            <a href="manifiesto.html" class="hover:text-dorado transition">Manifiesto</a>
-            <a href="contacto.html" class="hover:text-dorado transition">Contacto</a>
-            <a href="comentarios.html" class="hover:text-dorado transition">Foro</a>
+    <footer class="bg-azul-nn text-white py-16 px-6 text-center">
+        <div class="mb-10 flex justify-center space-x-10 font-bold uppercase text-sm tracking-widest">
+            <a href="manifiesto.html" class="hover:text-dorado-nn transition">Manifiesto</a>
+            <a href="contacto.html" class="hover:text-dorado-nn transition">Contacto</a>
+            <a href="comentarios.html" class="hover:text-dorado-nn transition">Foro</a>
         </div>
-        <p class="opacity-60 text-sm">© 2026 Venezuela Potencia. El futuro se construye con orden y legalidad.</p>
+        <p class="opacity-50 text-xs tracking-widest uppercase">© 2026 Venezuela Potencia. <br> Orden • Legalidad • Progreso</p>
     </footer>
 
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('-translate-x-full');
+            const overlay = document.getElementById('overlay');
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            
+            if(isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.style.display = 'block';
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.style.display = 'none';
+            }
         }
+
+        // CENTINELA DE SEGURIDAD
+        (function() {
+            console.log("🛡️ Centinela Nueva Nación: Vigilancia activa.");
+            window.addEventListener('error', function(e) {
+                if (e.target.tagName === 'SCRIPT') console.error("🛑 Bloqueo preventivo de script externo.");
+            }, true);
+        })();
     </script>
-    <script>
-// Centinela de Seguridad Nueva Nación
-(function() {
-    console.log("🛡️ Protección Nueva Nación Activa");
-
-    // Detectar si alguien intenta abrir la consola para hackear (opcional)
-    let devtools = function() {};
-    devtools.toString = function() {
-        console.warn("⚠️ Alerta: Acceso a herramientas de desarrollo detectado.");
-    };
-
-    // Bloquear intentos de inyectar scripts externos
-    window.addEventListener('error', function(e) {
-        if (e.target.tagName === 'SCRIPT') {
-            console.error("❌ Intento de carga de script no autorizado bloqueado.");
-        }
-    }, true);
-})();
-    </script>
-
 </body>
 </html>
