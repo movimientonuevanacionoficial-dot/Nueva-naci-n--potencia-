@@ -1,8 +1,6 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cusdis.com; script-src 'self' 'unsafe-inline' https://cusdis.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cusdis.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://cusdis.com; frame-src https://cusdis.com;">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propuestas | Nueva Nación</title>
@@ -16,58 +14,56 @@
         .text-azul-nn { color: var(--azul-principal); }
         .text-dorado-nn { color: var(--dorado-noble); }
         .border-dorado-nn { border-color: var(--dorado-noble); }
-        #sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 95; backdrop-filter: blur(3px); }
+        #sidebar { transition: transform 0.4s ease; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 95; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-100 text-gray-800 font-sans">
 
     <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
     <div id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-blue-950 text-white transform -translate-x-full z-[100] shadow-2xl border-r border-dorado-nn">
         <div class="p-8">
             <div class="flex justify-between items-center mb-12">
-                <span class="text-2xl font-black text-dorado-nn tracking-widest uppercase italic">Menú NN</span>
-                <button onclick="toggleMenu()" class="text-white text-4xl hover:text-dorado-nn transition">&times;</button>
+                <span class="text-2xl font-black text-dorado-nn italic">Menú NN</span>
+                <button onclick="toggleMenu()" class="text-white text-4xl">&times;</button>
             </div>
             <nav class="space-y-8 text-xl">
-                <a href="index.html" class="flex items-center space-x-4 hover:text-dorado-nn transition-all"><i class="fas fa-home w-8"></i><span>Inicio</span></a>
-                <a href="manifiesto.html" class="flex items-center space-x-4 hover:text-dorado-nn transition-all"><i class="fas fa-file-alt w-8"></i><span>Manifiesto</span></a>
-                <a href="contacto.html" class="flex items-center space-x-4 hover:text-dorado-nn transition-all"><i class="fas fa-user-plus w-8"></i><span>Sumarse</span></a>
-                <a href="comentarios.html" class="flex items-center space-x-4 text-dorado-nn font-bold"><i class="fas fa-comments w-8"></i><span>Foro</span></a>
+                <a href="index.html" class="block hover:text-dorado-nn">Inicio</a>
+                <a href="manifiesto.html" class="block hover:text-dorado-nn">Manifiesto</a>
+                <a href="contacto.html" class="block hover:text-dorado-nn">Sumarse</a>
+                <a href="comentarios.html" class="block text-dorado-nn font-bold">Foro</a>
             </nav>
         </div>
     </div>
 
-    <button onclick="toggleMenu()" class="fixed bottom-8 left-6 z-[90] bg-blue-900 text-white p-4 rounded-full shadow-2xl border-2 border-dorado-nn hover:scale-110 active:scale-95 transition-all">
-        <i class="fas fa-bars text-xl"></i>
+    <button onclick="toggleMenu()" class="fixed bottom-8 left-6 z-[90] bg-blue-900 text-white p-4 rounded-full border-2 border-dorado-nn">
+        <i class="fas fa-bars"></i>
     </button>
 
     <nav class="bg-white shadow-md sticky top-0 z-50 border-b-2 border-dorado-nn p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="Gemini_Generated_Image_ybo1qkybo1qkybo1.png" alt="Logo" class="h-12 w-auto">
-                <span class="text-xl font-black text-azul-nn uppercase italic tracking-tighter">Nueva <span class="text-dorado-nn">Nación</span></span>
-            </div>
-            <a href="index.html" class="text-xs font-bold text-azul-nn border border-azul-nn px-4 py-1 rounded-full hover:bg-azul-nn hover:text-white transition uppercase tracking-widest italic">Regresar</a>
+            <span class="text-xl font-black text-azul-nn uppercase italic">Nueva <span class="text-dorado-nn">Nación</span></span>
+            <a href="index.html" class="text-xs font-bold text-azul-nn border border-azul-nn px-4 py-1 rounded-full uppercase">Regresar</a>
         </div>
     </nav>
 
-    <main class="py-16 px-6 container mx-auto max-w-4xl">
-        <div class="text-center mb-16">
-            <h1 class="text-5xl font-black text-azul-nn uppercase mb-4 tracking-tighter">Foro de Propuestas</h1>
-            <p class="text-xl text-gray-500 font-light italic">Espacio para la construcción intelectual de la Venezuela Potencia.</p>
+    <main class="py-12 px-6 container mx-auto max-w-4xl">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-black text-azul-nn uppercase">Foro de Propuestas</h1>
         </div>
 
-        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-100 min-h-[400px]">
+        <div class="bg-white p-4 md:p-8 rounded-2xl shadow-lg min-h-[500px]">
+            
             <div id="cusdis_thread"
               data-host="https://cusdis.com"
               data-app-id="6ec776f3-a745-42d4-9549-04c9960768e0" 
-              data-page-id="nueva_nacion_comentarios_v1"
+              data-page-id="nueva_nacion_v2"
               data-page-url="https://movimientonuevanacionoficial-dot.github.io/Nueva-naci-n--potencia-/comentarios.html"
               data-page-title="Foro Nueva Nación">
             </div>
-            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+            
+            <script async src="https://cusdis.com/js/cusdis.es.js"></script>
         </div>
     </main>
 
@@ -75,8 +71,7 @@
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
-            const isClosed = sidebar.classList.contains('-translate-x-full');
-            if(isClosed) {
+            if(sidebar.classList.contains('-translate-x-full')) {
                 sidebar.classList.remove('-translate-x-full');
                 overlay.style.display = 'block';
             } else {
