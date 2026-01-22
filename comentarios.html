@@ -9,75 +9,94 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        :root { --azul-principal: #002855; --dorado-noble: #d4af37; }
-        .bg-azul-nn { background-color: var(--azul-principal); }
-        .text-azul-nn { color: var(--azul-principal); }
-        .text-dorado-nn { color: var(--dorado-noble); }
-        .border-dorado-nn { border-color: var(--dorado-noble); }
-        #sidebar { transition: transform 0.4s ease; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 95; }
+        :root { --azul: #002855; --dorado: #d4af37; --fondo: #f0f2f5; }
+        body { background-color: var(--fondo); }
+        .card-propuesta { background: white; border-radius: 12px; border-top: 5px solid var(--azul); }
+        .btn-primario { background-color: var(--azul); color: white; transition: 0.3s; }
+        .btn-primario:hover { background-color: var(--dorado); }
+        #sidebar { transition: transform 0.3s ease-in-out; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body class="font-sans text-gray-800">
 
-    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
-
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-blue-950 text-white transform -translate-x-full z-[100] shadow-2xl border-r border-dorado-nn">
-        <div class="p-8">
-            <div class="flex justify-between items-center mb-12">
-                <span class="text-2xl font-black text-dorado-nn italic">Menú NN</span>
-                <button onclick="toggleMenu()" class="text-white text-4xl">&times;</button>
-            </div>
-            <nav class="space-y-8 text-xl">
-                <a href="index.html" class="block hover:text-dorado-nn">Inicio</a>
-                <a href="manifiesto.html" class="block hover:text-dorado-nn">Manifiesto</a>
-                <a href="contacto.html" class="block hover:text-dorado-nn">Sumarse</a>
-                <a href="comentarios.html" class="block text-dorado-nn font-bold">Foro</a>
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-slate-900 text-white transform -translate-x-full z-[100] shadow-2xl">
+        <div class="p-6">
+            <h2 class="text-dorado font-bold mb-8 uppercase tracking-widest">Navegación</h2>
+            <nav class="space-y-4">
+                <a href="index.html" class="block py-2 hover:text-dorado border-b border-slate-800">Inicio</a>
+                <a href="manifiesto.html" class="block py-2 hover:text-dorado border-b border-slate-800">Manifiesto</a>
+                <a href="contacto.html" class="block py-2 hover:text-dorado border-b border-slate-800">Sumarse</a>
+                <a href="comentarios.html" class="block py-2 text-dorado font-bold border-b border-slate-800">Foro</a>
             </nav>
         </div>
     </div>
 
-    <button onclick="toggleMenu()" class="fixed bottom-8 left-6 z-[90] bg-blue-900 text-white p-4 rounded-full border-2 border-dorado-nn">
+    <button onclick="toggleMenu()" class="fixed top-4 left-4 z-[110] bg-slate-900 text-white p-3 rounded-lg shadow-lg">
         <i class="fas fa-bars"></i>
     </button>
 
-    <nav class="bg-white shadow-md sticky top-0 z-50 border-b-2 border-dorado-nn p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <span class="text-xl font-black text-azul-nn uppercase italic">Nueva <span class="text-dorado-nn">Nación</span></span>
-            <a href="index.html" class="text-xs font-bold text-azul-nn border border-azul-nn px-4 py-1 rounded-full uppercase">Regresar</a>
+    <header class="bg-white shadow-sm py-6 mb-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Foro de <span class="text-blue-800">Propuestas</span></h1>
+            <p class="text-gray-500 text-sm mt-2 uppercase tracking-widest italic">Construyendo la Venezuela Potencia</p>
         </div>
-    </nav>
+    </header>
 
-    <main class="py-12 px-6 container mx-auto max-w-4xl">
-        <div class="text-center mb-10">
-            <h1 class="text-4xl font-black text-azul-nn uppercase">Foro de Propuestas</h1>
-        </div>
+    <main class="container mx-auto px-4 max-w-3xl pb-20">
+        
+        <section class="card-propuesta p-6 shadow-md mb-10">
+            <h3 class="font-bold text-lg mb-4 text-blue-900 uppercase"><i class="fas fa-edit mr-2"></i> Redactar Propuesta</h3>
+            <form id="propuestaForm" class="space-y-4">
+                <div>
+                    <input type="text" id="nombrePropuesta" placeholder="Tu Nombre o Profesión" required
+                           class="w-full p-3 bg-gray-50 border border-gray-200 rounded-md outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <textarea id="textoPropuesta" rows="4" placeholder="Describe tu propuesta técnica o social..." required
+                              class="w-full p-3 bg-gray-50 border border-gray-200 rounded-md outline-none focus:border-blue-500"></textarea>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-md border border-blue-100">
+                    <label class="block text-xs font-bold text-blue-800 uppercase mb-2 italic">¿Tienes una imagen de respaldo?</label>
+                    <input type="url" id="urlImagen" placeholder="Pega el enlace de tu imagen (Ej: de ImgBB o Google Drive)" 
+                           class="w-full p-2 text-sm bg-white border border-blue-200 rounded-md outline-none">
+                    <p class="text-[10px] text-gray-500 mt-1 italic">Nota: Para seguridad, usa enlaces de servidores de imágenes externos.</p>
+                </div>
 
-        <div class="bg-white p-4 md:p-8 rounded-2xl shadow-lg min-h-[500px]">
-            
+                <button type="button" onclick="enviarAlForo()" class="w-full btn-primario py-3 rounded-md font-bold uppercase tracking-widest text-sm shadow-md">
+                    Publicar Propuesta
+                </button>
+            </form>
+        </section>
+
+        <section class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="font-bold text-blue-900 mb-6 uppercase text-sm border-b pb-2">Debate Ciudadano</h3>
             <div id="cusdis_thread"
               data-host="https://cusdis.com"
               data-app-id="6ec776f3-a745-42d4-9549-04c9960768e0" 
-              data-page-id="nueva_nacion_v2"
+              data-page-id="nueva_nacion_final"
               data-page-url="https://movimientonuevanacionoficial-dot.github.io/Nueva-naci-n--potencia-/comentarios.html"
               data-page-title="Foro Nueva Nación">
             </div>
-            
             <script async src="https://cusdis.com/js/cusdis.es.js"></script>
-        </div>
+        </section>
+
     </main>
+
+    <footer class="text-center py-6 text-gray-400 text-[10px] uppercase tracking-[0.3em]">
+        Nueva Nación © 2026 | Soberanía e Inteligencia
+    </footer>
 
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            if(sidebar.classList.contains('-translate-x-full')) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.style.display = 'block';
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                overlay.style.display = 'none';
-            }
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        function enviarAlForo() {
+            // Esta función ayuda al usuario a entender que debe comentar abajo en el sistema Cusdis
+            alert("Para que tu propuesta sea pública y debatida, por favor escríbela en la sección 'Debate Ciudadano' de abajo. ¡Tu voz cuenta!");
+            document.getElementById('cusdis_thread').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
